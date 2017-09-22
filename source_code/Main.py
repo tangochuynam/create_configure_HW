@@ -25,6 +25,7 @@ class Main:
         self.get_file_from_user()
         lst_file = os.listdir(self.path_input_txt)
         for filename in lst_file:
+            print(filename)
             self.path_file_txt = self.path_input_txt + self.slash + filename
             self.hostname = filename.split('.txt')[0]
             file_string = self.read_file()
@@ -109,7 +110,7 @@ class Main:
             self.slash = '\\'
         flag = True
         while flag:
-            print('FIRST: enter the directory, SECOND: enter name of file.txt: ')
+            #print('FIRST: enter the directory, SECOND: enter name of file.txt: ')
             path = input("Enter directory: ")
             flag = False
             self.path_file_txt = path
