@@ -13,27 +13,32 @@ class Main:
         self.template_file = 'hw_command.txt'
         self.file_txt = 'LDG03THA_CLI_input.txt'
         self.hostname = self.file_txt.split('.txt')[0]
-        self.path_file_txt = self.path_input_txt + '/' + self.file_txt
-        self.slash = '/'
+        if os.name == 'nt':
+            self.slash = '\\'
+        else:
+            self.slash = '/'
+        self.path_file_txt = self.path_input_txt + self.slash + self.file_txt
 
     def main(self):
         pttr_split_command = '(?:<[\S]+>)display .*\n(?:(?!(?:<[\S]+>)display).*\n)*'
         # this is for other people use - for local please use # to block it
         self.get_file_from_user()
-
-        file_string = self.read_file()
-        if len(file_string) == 0:
-            raise ValueError(self.path_file_txt + " does not exist")
-        else:
-            # handle file and get information
-            # split into 5 parts
-            part_1, part_2, part_3, part_4, part_5 = re.findall(pttr_split_command, file_string, flags=re.MULTILINE)
-            lst_tunnel = self.get_list_tunnel(part_1)
-            lst_int = self.get_list_interface(part_2)
-            lst_vsi = self.get_list_vsi(part_3)
-            lst_vpn = self.get_list_vpn(part_4)
-            lst_vlan = self.get_list_vlan(part_5)
-            self.writefile(lst_tunnel, lst_int, lst_vsi, lst_vpn, lst_vlan)
+        lst_file = os.listdir(self.path_input_txt)
+        for filename in lst_file:
+            self.path_file_txt = self.path_input_txt + self.slash + filename
+            file_string = self.read_file()
+            if len(file_string) == 0:
+                raise ValueError(self.path_file_txt + " does not exist")
+            else:
+                # handle file and get information
+                # split into 5 parts
+                part_1, part_2, part_3, part_4, part_5 = re.findall(pttr_split_command, file_string, flags=re.MULTILINE)
+                lst_tunnel = self.get_list_tunnel(part_1)
+                lst_int = self.get_list_interface(part_2)
+                lst_vsi = self.get_list_vsi(part_3)
+                lst_vpn = self.get_list_vpn(part_4)
+                lst_vlan = self.get_list_vlan(part_5)
+                self.writefile(lst_tunnel, lst_int, lst_vsi, lst_vpn, lst_vlan)
 
     def get_list_tunnel(self, part_1):
         pttr = 'Tunnel.*\n'
@@ -105,14 +110,8 @@ class Main:
         while flag:
             print('FIRST: enter the directory, SECOND: enter name of file.txt: ')
             path = input("Enter directory: ")
-            hw_file = input('Enter Huawei file txt: ')
-            if not os.path.isfile(path + self.slash + hw_file):
-                print('You enter wrong name Huawei or wrong directory! Please enter again')
-            else:
-                flag = False
-                self.path_file_txt = path + self.slash + hw_file
-                self.path_output = path
-                self.hostname = hw_file
-
+            flag = False
+            self.path_file_txt = path
+            self.path_output = path
 
 Main().main()
