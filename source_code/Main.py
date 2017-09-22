@@ -26,6 +26,7 @@ class Main:
         lst_file = os.listdir(self.path_input_txt)
         for filename in lst_file:
             self.path_file_txt = self.path_input_txt + self.slash + filename
+            self.hostname = filename.split('.txt')[0]
             file_string = self.read_file()
             if len(file_string) == 0:
                 raise ValueError(self.path_file_txt + " does not exist")
