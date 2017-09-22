@@ -22,25 +22,26 @@ class Main:
     def main(self):
         pttr_split_command = '(?:<[\S]+>)display .*\n(?:(?!(?:<[\S]+>)display).*\n)*'
         # this is for other people use - for local please use # to block it
-        self.get_file_from_user()
+        #self.get_file_from_user()
         lst_file = os.listdir(self.path_input_txt)
         for filename in lst_file:
-            print(filename)
-            self.path_file_txt = self.path_input_txt + self.slash + filename
-            self.hostname = filename.split('.txt')[0]
-            file_string = self.read_file()
-            if len(file_string) == 0:
-                raise ValueError(self.path_file_txt + " does not exist")
-            else:
-                # handle file and get information
-                # split into 5 parts
-                part_1, part_2, part_3, part_4, part_5 = re.findall(pttr_split_command, file_string, flags=re.MULTILINE)
-                lst_tunnel = self.get_list_tunnel(part_1)
-                lst_int = self.get_list_interface(part_2)
-                lst_vsi = self.get_list_vsi(part_3)
-                lst_vpn = self.get_list_vpn(part_4)
-                lst_vlan = self.get_list_vlan(part_5)
-                self.writefile(lst_tunnel, lst_int, lst_vsi, lst_vpn, lst_vlan)
+            if filename != '.DS_Store':
+                print(filename)
+                self.path_file_txt = self.path_input_txt + self.slash + filename
+                self.hostname = filename.split('.txt')[0]
+                file_string = self.read_file()
+                if len(file_string) == 0:
+                    raise ValueError(self.path_file_txt + " does not exist")
+                else:
+                    # handle file and get information
+                    # split into 5 parts
+                    part_1, part_2, part_3, part_4, part_5 = re.findall(pttr_split_command, file_string, flags=re.MULTILINE)
+                    lst_tunnel = self.get_list_tunnel(part_1)
+                    lst_int = self.get_list_interface(part_2)
+                    lst_vsi = self.get_list_vsi(part_3)
+                    lst_vpn = self.get_list_vpn(part_4)
+                    lst_vlan = self.get_list_vlan(part_5)
+                    self.writefile(lst_tunnel, lst_int, lst_vsi, lst_vpn, lst_vlan)
 
     def get_list_tunnel(self, part_1):
         pttr = 'Tunnel.*\n'
@@ -71,18 +72,32 @@ class Main:
         return lst_vpn
 
     def get_list_vlan(self, part_5):
-        pttr = '\s+Interface list.*\n'
+        pttr = '\s+Interface list.*\n(?:.*\n)*'
         lst_temp = re.findall(pttr, part_5, flags=re.MULTILINE)
         lst_vlan = []
-        #print(len(lst_temp))
-        vlan = lst_temp[0].split(':')[1].strip()
-        if vlan != '':
-            # for now this line have one Vlanif - maybe in the future they have multiple value
-            if vlan.startswith('Vlanif'):
-                lst_vlan = [vlan.split('Vlanif')[1].strip()]
-            else:
-                lst_vlan = [vlan]
-            #print(lst_vlan)
+
+        if len(lst_temp) > 0:
+            lst_line = lst_temp[0].splitlines()
+            # remove '' element
+            for line in lst_line:
+                if line.strip() == '':
+                    lst_line.remove(line)
+            #print(len(lst_line))
+            for i in range(0, len(lst_line)):
+                first_element = lst_line[i].split(',')[0].strip()
+                if i == 0:
+                    vlan = first_element.split(':')[1].strip()
+                else:
+                    vlan = first_element
+                #print('vlan: ' + vlan)
+                if vlan != '':
+                    # for now this line have one Vlanif - maybe in the future they have multiple value
+                    if vlan.startswith('Vlanif'):
+                        lst_vlan.append(vlan.split('Vlanif')[1].strip())
+                    else:
+                        lst_vlan.append(vlan)
+                #print(lst_vlan)
+        #print(lst_vlan)
         return lst_vlan
 
     def read_file(self):

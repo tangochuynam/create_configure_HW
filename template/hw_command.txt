@@ -86,6 +86,7 @@ display multicast rpf-info 123.29.128.122
 screen-length 0 temporary
 display dhcp snooping bind-table dynamic 
 display ip vpn-instance VoD-LDG interface
+{%- if lst_vlan|length > 0 %}
 {%- for vlan_name in lst_vlan %}
 {%- if (not vlan_name.startswith('GigabitEthernet')) and (not vlan_name.startswith('Eth-Trunk')) %}
 display dhcp snooping bind-table vlan {{vlan_name}}
@@ -93,6 +94,7 @@ display dhcp snooping bind-table vlan {{vlan_name}}
 display dhcp snooping bind-table interface {{vlan_name}}
 {%- endif %}
 {%- endfor %}
+{%- endif %}
 
 
 !!Lay thong tin mac tung vsi & inteface !!
