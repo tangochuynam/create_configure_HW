@@ -66,11 +66,16 @@ class Main:
     def get_list_vlan(self, part_5):
         pttr = '\s+Interface list.*\n'
         lst_temp = re.findall(pttr, part_5, flags=re.MULTILINE)
+        lst_vlan = []
         #print(len(lst_temp))
-        vlan = lst_temp[0].split(':')[1]
-        # for now this line have one Vlanif - maybe in the future they have multiple value
-        lst_vlan = [vlan.split('Vlanif')[1].strip()]
-        #print(lst_vlan)
+        vlan = lst_temp[0].split(':')[1].strip()
+        if vlan != '':
+            # for now this line have one Vlanif - maybe in the future they have multiple value
+            if vlan.startswith('Vlanif'):
+                lst_vlan = [vlan.split('Vlanif')[1].strip()]
+            else:
+                lst_vlan = [vlan]
+            #print(lst_vlan)
         return lst_vlan
 
     def read_file(self):
