@@ -98,7 +98,8 @@ class Main:
             self.slash = '\\'
         flag = True
         while flag:
-            path = input("Enter directory of file: ")
+            print('FIRST: enter the directory, SECOND: enter name of file.txt: ')
+            path = input("Enter directory: ")
             hw_file = input('Enter Huawei file txt: ')
             if not os.path.isfile(path + self.slash + hw_file):
                 print('You enter wrong name Huawei or wrong directory! Please enter again')
