@@ -12,15 +12,19 @@ class Main:
         self.path_output = 'output'
         self.template_file = 'hw_command.txt'
         self.file_txt = 'LDG03THA_CLI_input.txt'
-        self.hostname = ''
+        self.hostname = self.file_txt.split('.txt')[0]
+        self.path_file_txt = self.path_input_txt + '/' + self.file_txt
+        self.slash = '/'
 
     def main(self):
         pttr_split_command = '(?:<[\S]+>)display .*\n(?:(?!(?:<[\S]+>)display).*\n)*'
+        # this is for other people use - for local please use # to block it
+        self.get_file_from_user()
+
         file_string = self.read_file()
         if len(file_string) == 0:
-            raise ValueError(self.file_txt + " does not exist")
+            raise ValueError(self.path_file_txt + " does not exist")
         else:
-            self.hostname = self.file_txt.split('.txt')[0]
             # handle file and get information
             # split into 5 parts
             part_1, part_2, part_3, part_4, part_5 = re.findall(pttr_split_command, file_string, flags=re.MULTILINE)
@@ -70,9 +74,8 @@ class Main:
         return lst_vlan
 
     def read_file(self):
-        filename = self.path_input_txt + '/' + self.file_txt
-        if os.path.isfile(filename):
-            with open(filename, 'r') as data_file:
+        if os.path.isfile(self.path_file_txt):
+            with open(self.path_file_txt, 'r') as data_file:
                 return data_file.read()
         else:
             return ""
@@ -84,11 +87,26 @@ class Main:
                       'lst_vsi': lst_vsi,
                       'lst_vpn': lst_vpn,
                       'lst_vlan': lst_vlan}
-        file_ouput = self.path_output + "/" + 'HW_Command-' + self.hostname + '-'.join(str(datetime.datetime.now()).split(":")) + ".txt"
+        file_ouput = self.path_output + self.slash + 'HW_Command-' + self.hostname + '-'.join(str(datetime.datetime.now()).split(":")) + ".txt"
         with open(file_ouput, 'w') as f:
             f_txt = template_env.get_template(self.template_file).render(hw_command)
             f.write(f_txt)
-        print("write successful")
+        print("create file successful")
+
+    def get_file_from_user(self):
+        if os.name == 'nt':
+            self.slash = '\\'
+        flag = True
+        while flag:
+            path = input("Enter directory of file: ")
+            hw_file = input('Enter Huawei file txt: ')
+            if not os.path.isfile(path + self.slash + hw_file):
+                print('You enter wrong name Huawei or wrong directory! Please enter again')
+            else:
+                flag = False
+                self.path_file_txt = path + self.slash + hw_file
+                self.path_output = path
+                self.hostname = hw_file
 
 
 Main().main()
