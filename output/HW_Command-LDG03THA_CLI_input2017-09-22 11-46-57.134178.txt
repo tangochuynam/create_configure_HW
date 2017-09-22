@@ -1,0 +1,252 @@
+!!Lay thong tin interface !!
+screen-length 0 temporary
+dis interface brief
+display ip interface brief 
+display interface description 
+display eth-trunk
+display lacp statistics eth-trunk 
+
+
+!!Kiem tra trang thai BFD !!!
+screen-length 0 temporary
+display bfd session all
+display bfd session discriminator <x> verbose 
+
+!! Kiem tra trang thai interface Tunnel & Tunnel-policy 
+screen-length 0 temporary
+display tunnel-policy
+display interface brief | include Tunnel
+display mpls te tunnel-interface Tunnel Tunnel
+display mpls te tunnel-interface Tunnel Tunnel0/0/1
+display mpls te tunnel-interface Tunnel Tunnel0/0/2
+display mpls te hot-standby state all
+
+display mpls te hot-standby state interface Tunnel Tunnel
+display mpls te hot-standby state interface Tunnel Tunnel0/0/1
+display mpls te hot-standby state interface Tunnel Tunnel0/0/2
+display mpls rsvp-te peer 
+
+
+!!Lay thong tin dinh tuyen !!
+screen-length 0 temporary
+display lldp neighbor
+display ip routing-table
+display ip routing-table statistics
+display isis peer 
+dis isis lsdb
+display isis spf-tree 
+display isis interface
+display mpls route-state
+display mpls ldp interface 
+display mpls ldp peer
+display mpls ldp session
+display bgp vpnv4 all peer
+display bgp vpnv4 all routing-table
+
+!!Lay thong tin dich vu L2circuit !!
+screen-length 0 temporary
+display mpls l2vc brief
+display mpls l2vc brief | include Client Interface|AC status|VC State|VC ID
+display mpls l2vc
+display mpls l2vc interface GigabitEthernet4/1/0.1359
+display mpls l2vc interface GigabitEthernet4/1/0.2263
+display mpls l2vc interface GigabitEthernet4/1/0.2359
+display mpls l2vc interface GigabitEthernet4/1/1.566
+display mpls l2vc interface GigabitEthernet4/1/1.566
+display mpls l2vc interface GigabitEthernet4/1/1.1066
+display mpls l2vc interface GigabitEthernet4/1/2.191
+display mpls l2vc interface GigabitEthernet4/1/2.191
+display mpls l2vc interface GigabitEthernet4/1/2.691
+display mpls l2vc interface GigabitEthernet4/1/3.192
+display mpls l2vc interface GigabitEthernet4/1/3.192
+display mpls l2vc interface GigabitEthernet4/1/3.692
+display mpls l2vc interface GigabitEthernet4/1/3.1352
+display mpls l2vc interface GigabitEthernet4/1/3.2352
+display mpls l2vc interface GigabitEthernet4/1/6.364
+display mpls l2vc interface GigabitEthernet4/1/6.364
+display mpls l2vc interface GigabitEthernet4/1/6.695
+display mpls l2vc interface GigabitEthernet4/1/6.864
+display mpls l2vc interface GigabitEthernet4/1/8.345
+display mpls l2vc interface GigabitEthernet4/1/8.345
+display mpls l2vc interface GigabitEthernet4/1/8.845
+display mpls l2vc interface GigabitEthernet4/1/8.1370
+display mpls l2vc interface GigabitEthernet4/1/8.2370
+display mpls l2vc interface GigabitEthernet4/1/9.427
+display mpls l2vc interface GigabitEthernet4/1/9.427
+display mpls l2vc interface GigabitEthernet4/1/10.1358
+display mpls l2vc interface GigabitEthernet4/1/10.1363
+display mpls l2vc interface GigabitEthernet4/1/10.2358
+display mpls l2vc interface GigabitEthernet4/1/10.2363
+display mpls l2vc interface GigabitEthernet4/1/10.505
+display mpls l2vc interface GigabitEthernet4/1/7.1356
+display mpls l2vc interface GigabitEthernet4/1/7.2356
+display mpls l2vc interface GigabitEthernet4/1/5.1348
+display mpls l2vc interface GigabitEthernet4/1/5.2348
+display mpls l2vc interface GigabitEthernet4/1/5.193
+display mpls l2vc interface GigabitEthernet4/1/5.193
+display mpls l2vc interface GigabitEthernet4/1/5.693
+display mpls l2vc interface GigabitEthernet4/1/7.2356
+display mpls l2vc interface GigabitEthernet4/1/0.2359
+display mpls l2vc interface GigabitEthernet4/1/5.1348
+display mpls l2vc interface GigabitEthernet4/1/3.1352
+display mpls l2vc interface GigabitEthernet4/1/10.1363
+display mpls l2vc interface GigabitEthernet4/1/7.1356
+display mpls l2vc interface GigabitEthernet4/1/0.1359
+display mpls l2vc interface GigabitEthernet4/1/8.1370
+display mpls l2vc interface GigabitEthernet4/1/10.2363
+display mpls l2vc interface GigabitEthernet4/1/5.2348
+display mpls l2vc interface GigabitEthernet4/1/8.2370
+display mpls l2vc interface GigabitEthernet4/1/3.2352
+display mpls l2vc interface GigabitEthernet4/1/3.1556
+display mpls l2vc interface GigabitEthernet4/1/3.2556
+display mpls l2vc interface GigabitEthernet4/1/0.1553
+display mpls l2vc interface GigabitEthernet4/1/0.2553
+display mpls l2vc interface Eth-Trunk1.1048
+display mpls l2vc interface Eth-Trunk1.1048
+display mpls l2vc interface Eth-Trunk2.1092
+display mpls l2vc interface Eth-Trunk4.2110
+display mpls l2vc interface Eth-Trunk4.2110
+display mpls l2vc interface Eth-Trunk2.1092
+display mpls l2vc interface GigabitEthernet4/1/1.477
+display mpls l2vc interface GigabitEthernet4/1/0.195
+display mpls l2vc interface GigabitEthernet4/1/0.195
+
+!!Lay thong tin dich vu VPLS !!
+screen-length 0 temporary
+display vsi 
+display vpls connection 
+display vpls connection up
+display vsi
+display vsi name DSLAM_NMS peer-info
+display vsi name 3G_VMS_SIU_3808 peer-info
+display vsi name VODMIMOSATV peer-info
+display vsi name SWL2_NMS peer-info
+display vsi name SWL2_FTTH_960_2 peer-info
+display vsi name NMS_OSN_VL13 peer-info
+display vsi name AGRIBANK-LDG-NT peer-info
+display vsi name SWL2_LAG1_TANHA peer-info
+display vsi name MXU_NMS peer-info
+display vsi name DSLAM_NMS1 peer-info
+display vsi name BD_TW peer-info
+display vsi name 3G_VNP_IUP_2710 peer-info
+display vsi name 3G_VNP_MUP_2735 peer-info
+display vsi name SWL2_FTTH_960 peer-info
+display vsi name GPON_ALCATEL_NMS peer-info
+display vsi name EP_VNPTLDG_test peer-info
+display vsi name GPON_4000 peer-info
+display vsi name 3G_VMS_IUP_1618 peer-info
+display vsi name 3G_VNP_MUP_2618 peer-info
+display vsi name 3G_VMS_IUP_1016 peer-info
+display vsi name 3G_VMS_MUP_2016 peer-info
+display vsi name 3G_VMS_IUP_1035 peer-info
+display vsi name 3G_VMS_MUP_2035 peer-info
+display vsi name 3G_VMS_SIU_3806 peer-info
+display vlan brief 
+
+!!Lay thong tin dich vu L3vpn 
+screen-length 0 temporary
+display ip vpn-instance
+display ip routing-table vpn-instance ENODEB-OAM
+display ip routing-table vpn-instance ENODEB-SERVICE
+display ip routing-table vpn-instance IUB-3G-L3-VNP
+display ip routing-table vpn-instance TSLCD-KHOICHINHQUYEN-2990
+display ip routing-table vpn-instance VPRN-306100004
+display ip routing-table vpn-instance VPRN-311005514
+display ip routing-table vpn-instance VoD-LDG
+display bgp vpnv4 all routing-table peer 123.29.47.18 advertised-routes
+display bgp vpnv4 all routing-table peer 123.29.47.18 received-routes
+display bgp vpnv4 all routing-table peer 123.29.47.19 advertised-routes
+display bgp vpnv4 all routing-table peer 123.29.47.19 received-routes
+
+!!Lay thong tin dich vu Multicast, VoD !!
+screen-length 0 temporary
+display pim interface 
+display pim neighbor 
+display multicast routing-table
+display multicast rpf-info 123.29.128.4
+display multicast rpf-info 123.29.128.122 
+
+
+!!Lay thong tin DHCP!!
+screen-length 0 temporary
+display dhcp snooping bind-table dynamic 
+display ip vpn-instance VoD-LDG interface 
+display dhcp snooping bind-table vlan 2410
+
+
+!!Lay thong tin mac tung vsi & inteface !!
+screen-length 0 temporary
+display mac-address dynamic vsi DSLAM_NMS | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VMS_SIU_3808 | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi VODMIMOSATV | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi SWL2_NMS | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi SWL2_FTTH_960_2 | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi NMS_OSN_VL13 | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi AGRIBANK-LDG-NT | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi SWL2_LAG1_TANHA | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi MXU_NMS | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi DSLAM_NMS1 | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi BD_TW | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VNP_IUP_2710 | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VNP_MUP_2735 | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi SWL2_FTTH_960 | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi GPON_ALCATEL_NMS | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi EP_VNPTLDG_test | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi GPON_4000 | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VMS_IUP_1618 | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VNP_MUP_2618 | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VMS_IUP_1016 | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VMS_MUP_2016 | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VMS_IUP_1035 | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VMS_MUP_2035 | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VMS_SIU_3806 | exclude 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi DSLAM_NMS | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VMS_SIU_3808 | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi VODMIMOSATV | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi SWL2_NMS | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi SWL2_FTTH_960_2 | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi NMS_OSN_VL13 | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi AGRIBANK-LDG-NT | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi SWL2_LAG1_TANHA | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi MXU_NMS | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi DSLAM_NMS1 | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi BD_TW | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VNP_IUP_2710 | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VNP_MUP_2735 | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi SWL2_FTTH_960 | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi GPON_ALCATEL_NMS | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi EP_VNPTLDG_test | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi GPON_4000 | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VMS_IUP_1618 | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VNP_MUP_2618 | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VMS_IUP_1016 | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VMS_MUP_2016 | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VMS_IUP_1035 | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VMS_MUP_2035 | include 1/0|2/0|3/0|4/0
+display mac-address dynamic vsi 3G_VMS_SIU_3806 | include 1/0|2/0|3/0|4/0
+
+
+!!Lay thong tin arp tung vrf !!
+screen-length 0 temporary
+display ip vpn-instance 
+display arp all
+display arp vpn-instance ENODEB-OAM all
+display arp vpn-instance ENODEB-SERVICE all
+display arp vpn-instance IUB-3G-L3-VNP all
+display arp vpn-instance TSLCD-KHOICHINHQUYEN-2990 all
+display arp vpn-instance VPRN-306100004 all
+display arp vpn-instance VPRN-311005514 all
+display arp vpn-instance VoD-LDG all
+/*display arp vpn-instance <name> slot *  */
+
+
+!!Lay thong tin route tung vrf !!
+screen-length 0 temporary
+display ip vpn-instance
+display ip routing-table vpn-instance ENODEB-OAM
+display ip routing-table vpn-instance ENODEB-SERVICE
+display ip routing-table vpn-instance IUB-3G-L3-VNP
+display ip routing-table vpn-instance TSLCD-KHOICHINHQUYEN-2990
+display ip routing-table vpn-instance VPRN-306100004
+display ip routing-table vpn-instance VPRN-311005514
+display ip routing-table vpn-instance VoD-LDG

@@ -1,0 +1,189 @@
+﻿<LDG03THA>screen-length 0 temporary
+Info: The configuration takes effect on the current user terminal interface only.
+<LDG03THA>display interface brief | include Tunnel
+*down: administratively down
+^down: standby
+(l): loopback
+(s): spoofing
+(b): BFD down
+(e): ETHOAM down
+(d): Dampening Suppressed
+InUti/OutUti: input utility/output utility
+Interface                   PHY   Protocol InUti OutUti   inErrors  outErrors
+Tunnel0/0/1                 up    up          --     --          0          0
+Tunnel0/0/2                 up    up          --     --          0          0
+<LDG03THA>display mpls l2vc brief | include Client Interface
+ Total LDP VC : 62     16 up       46 down 
+
+ *Client Interface     : GigabitEthernet4/1/0.1359
+
+ *Client Interface     : GigabitEthernet4/1/0.2263
+
+ *Client Interface     : GigabitEthernet4/1/0.2359
+
+ *Client Interface     : GigabitEthernet4/1/1.566
+
+ *Client Interface     : GigabitEthernet4/1/1.566
+
+ *Client Interface     : GigabitEthernet4/1/1.1066
+
+ *Client Interface     : GigabitEthernet4/1/2.191
+
+ *Client Interface     : GigabitEthernet4/1/2.191
+
+ *Client Interface     : GigabitEthernet4/1/2.691
+
+ *Client Interface     : GigabitEthernet4/1/3.192
+
+ *Client Interface     : GigabitEthernet4/1/3.192
+
+ *Client Interface     : GigabitEthernet4/1/3.692
+
+ *Client Interface     : GigabitEthernet4/1/3.1352
+
+ *Client Interface     : GigabitEthernet4/1/3.2352
+
+ *Client Interface     : GigabitEthernet4/1/6.364
+
+ *Client Interface     : GigabitEthernet4/1/6.364
+
+ *Client Interface     : GigabitEthernet4/1/6.695
+
+ *Client Interface     : GigabitEthernet4/1/6.864
+
+ *Client Interface     : GigabitEthernet4/1/8.345
+
+ *Client Interface     : GigabitEthernet4/1/8.345
+
+ *Client Interface     : GigabitEthernet4/1/8.845
+
+ *Client Interface     : GigabitEthernet4/1/8.1370
+
+ *Client Interface     : GigabitEthernet4/1/8.2370
+
+ *Client Interface     : GigabitEthernet4/1/9.427
+
+ *Client Interface     : GigabitEthernet4/1/9.427
+
+ *Client Interface     : GigabitEthernet4/1/10.1358
+
+ *Client Interface     : GigabitEthernet4/1/10.1363
+
+ *Client Interface     : GigabitEthernet4/1/10.2358
+
+ *Client Interface     : GigabitEthernet4/1/10.2363
+
+ *Client Interface     : GigabitEthernet4/1/10.505
+
+ *Client Interface     : GigabitEthernet4/1/7.1356
+
+ *Client Interface     : GigabitEthernet4/1/7.2356
+
+ *Client Interface     : GigabitEthernet4/1/5.1348
+
+ *Client Interface     : GigabitEthernet4/1/5.2348
+
+ *Client Interface     : GigabitEthernet4/1/5.193
+
+ *Client Interface     : GigabitEthernet4/1/5.193
+
+ *Client Interface     : GigabitEthernet4/1/5.693
+
+ *Client Interface     : GigabitEthernet4/1/7.2356
+
+ *Client Interface     : GigabitEthernet4/1/0.2359
+
+ *Client Interface     : GigabitEthernet4/1/5.1348
+
+ *Client Interface     : GigabitEthernet4/1/3.1352
+
+ *Client Interface     : GigabitEthernet4/1/10.1363
+
+ *Client Interface     : GigabitEthernet4/1/7.1356
+
+ *Client Interface     : GigabitEthernet4/1/0.1359
+
+ *Client Interface     : GigabitEthernet4/1/8.1370
+
+ *Client Interface     : GigabitEthernet4/1/10.2363
+
+ *Client Interface     : GigabitEthernet4/1/5.2348
+
+ *Client Interface     : GigabitEthernet4/1/8.2370
+
+ *Client Interface     : GigabitEthernet4/1/3.2352
+
+ *Client Interface     : GigabitEthernet4/1/3.1556
+
+ *Client Interface     : GigabitEthernet4/1/3.2556
+
+ *Client Interface     : GigabitEthernet4/1/0.1553
+
+ *Client Interface     : GigabitEthernet4/1/0.2553
+
+ *Client Interface     : Eth-Trunk1.1048
+
+ *Client Interface     : Eth-Trunk1.1048
+
+ *Client Interface     : Eth-Trunk2.1092
+
+ *Client Interface     : Eth-Trunk4.2110
+
+ *Client Interface     : Eth-Trunk4.2110
+
+ *Client Interface     : Eth-Trunk2.1092
+
+ *Client Interface     : GigabitEthernet4/1/1.477
+
+ *Client Interface     : GigabitEthernet4/1/0.195
+
+ *Client Interface     : GigabitEthernet4/1/0.195
+
+<LDG03THA>display vsi 
+Total VSI number is 24, 23 is up, 1 is down, 24 is LDP mode, 0 is BGP mode, 0 is AD mode, 0 is unspecified mode
+--------------------------------------------------------------------------
+Vsi                             Mem    PW   Mac       Encap     Mtu   Vsi     
+Name                            Disc   Type Learn     Type      Value State   
+--------------------------------------------------------------------------
+DSLAM_NMS                       static ldp  unqualify vlan      1500  *down   
+3G_VMS_SIU_3808                 static ldp  unqualify vlan      1500  up      
+VODMIMOSATV                     static ldp  unqualify vlan      1500  up      
+SWL2_NMS                        static ldp  unqualify vlan      1500  up      
+SWL2_FTTH_960_2                 --     ldp  unqualify vlan      1500  up      
+NMS_OSN_VL13                    static ldp  unqualify vlan      1500  up      
+AGRIBANK-LDG-NT                 static ldp  unqualify vlan      1500  up      
+SWL2_LAG1_TANHA                 static ldp  unqualify vlan      1500  up      
+MXU_NMS                         static ldp  unqualify vlan      1500  up      
+DSLAM_NMS1                      static ldp  unqualify vlan      1500  up      
+BD_TW                           static ldp  unqualify vlan      1500  up      
+3G_VNP_IUP_2710                 static ldp  unqualify vlan      1500  up      
+3G_VNP_MUP_2735                 static ldp  unqualify vlan      1500  up      
+SWL2_FTTH_960                   static ldp  unqualify vlan      1500  up      
+GPON_ALCATEL_NMS                --     ldp  unqualify vlan      1500  up      
+EP_VNPTLDG_test                 --     ldp  unqualify vlan      1500  up      
+GPON_4000                       static ldp  unqualify vlan      1500  up      
+3G_VMS_IUP_1618                 static ldp  unqualify vlan      1500  up      
+3G_VNP_MUP_2618                 static ldp  unqualify vlan      1500  up      
+3G_VMS_IUP_1016                 static ldp  unqualify vlan      1500  up      
+3G_VMS_MUP_2016                 static ldp  unqualify vlan      1500  up      
+3G_VMS_IUP_1035                 static ldp  unqualify vlan      1500  up      
+3G_VMS_MUP_2035                 static ldp  unqualify vlan      1500  up      
+3G_VMS_SIU_3806                 static ldp  unqualify vlan      1500  up      
+<LDG03THA>display ip vpn-instance
+ Total VPN-Instances configured : 7
+ Total IPv4 VPN-Instances configured : 7
+ Total IPv6 VPN-Instances configured : 0
+
+  VPN-Instance Name               RD                   Creation Time                     Address family
+  ENODEB-OAM                      65061:2074808020     2016/11/18 08:25:41 +07:00        ipv4       
+  ENODEB-SERVICE                  65061:2074807020     2016/11/18 08:25:34 +07:00        ipv4       
+  IUB-3G-L3-VNP                   65061:2074801020     2016/05/22 17:30:47 +07:00        ipv4       
+  TSLCD-KHOICHINHQUYEN-2990       65061:2242023001     2016/08/15 15:34:16 +07:00        ipv4       
+  VPRN-306100004                  65061:202000004      2017/06/12 16:01:11 +07:00        ipv4       
+  VPRN-311005514                  65061:1100550020     2017/03/01 15:05:39 +07:00        ipv4       
+  VoD-LDG                         65061:2099801020     2013/07/08 18:30:08               ipv4       
+<LDG03THA>display ip vpn-instance VoD-LDG interface 
+ VPN-Instance Name and ID : VoD-LDG, 1
+  Interface Number : 1 
+  Interface list : Vlanif2410
+
