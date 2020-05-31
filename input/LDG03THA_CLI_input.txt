@@ -1,4 +1,4 @@
-﻿<LDG03THA>screen-length 0 temporary
+<LDG03THA>screen-length 0 temporary
 Info: The configuration takes effect on the current user terminal interface only.
 <LDG03THA>display interface brief | include Tunnel
 *down: administratively down
