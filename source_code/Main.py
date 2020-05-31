@@ -13,8 +13,6 @@ class Main:
         self.path_template = Main.base.joinpath('template')
         self.template_file = 'hw_command.txt'
         self.path_input = Main.base.joinpath('input')
-        self.file_txt = 'LDG03THA_CLI_input.txt'
-        self.hostname = self.file_txt.split('.txt')[0]
 
     def main(self):
         pttr_split_command = '(?:<[\S]+>)display .*\n(?:(?!(?:<[\S]+>)display).*\n)*'
